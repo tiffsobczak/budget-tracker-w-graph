@@ -1,7 +1,10 @@
 let transactions = [];
 let myChart;
 
-Notification.requestPermission()
+Notification.requestPermission(function(status) {
+  console.log('Notification permission status:', status);
+});
+
 
 fetch("/api/transaction")
   .then(response => {
@@ -131,6 +134,11 @@ function sendTransaction(isAdding) {
       errorEl.textContent = "Missing Information";
     }
     else {
+      if (Notification.permission == 'granted') {
+        navigator.serviceWorker.getRegistration().then(function(reg) {
+          reg.showNotification('Transaction successfully logged!');
+        });
+      }
       // clear form
       nameEl.value = "";
       amountEl.value = "";

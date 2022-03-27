@@ -60,6 +60,11 @@ function uploadBudget() {
           if (serverResponse.message) {
             throw new Error(serverResponse);
           }
+          if (Notification.permission == 'granted') {
+            navigator.serviceWorker.getRegistration().then(function(reg) {
+              reg.showNotification('Transaction successfully logged!');
+            });
+          }
 
           const transaction = db.transaction(['new_transaction'], 'readwrite');
           const budgetObjectStore = transaction.objectStore('new_transaction');
