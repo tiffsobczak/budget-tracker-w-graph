@@ -1,6 +1,8 @@
 let transactions = [];
 let myChart;
 
+Notification.requestPermission()
+
 fetch("/api/transaction")
   .then(response => {
     return response.json();

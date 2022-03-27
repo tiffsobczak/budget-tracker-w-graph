@@ -24,6 +24,7 @@ request.onerror = function(event) {
 };
 
 function saveRecord(record) {
+    console.log("SAVERECORD")
   const transaction = db.transaction(['new_transaction'], 'readwrite');
 
   const budgetObjectStore = transaction.objectStore('new_transaction');
@@ -33,6 +34,7 @@ function saveRecord(record) {
 }
 
 function uploadBudget() {
+    console.log("UPLOADING BUDGET")
   // open a transaction on your pending db
   const transaction = db.transaction(['new_transaction'], 'readwrite');
 

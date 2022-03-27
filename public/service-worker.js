@@ -8,10 +8,10 @@ self.addEventListener('install', function (e) {
   })
   
 const FILES_TO_CACHE = [
-    `/idb.js`,
+    `/js/idb.js`,
     `/index.html`,
-    `/index.js`,
-    `/index.css`,
+    `/js/index.js`,
+    `/css/style.css`,
     `/manifest.json`,
 ];
 
